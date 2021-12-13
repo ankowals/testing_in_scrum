@@ -112,7 +112,7 @@ Often what we call unit tests are actually component integration tests (function
 They can utilize contract testing approach in the sense that results of one test can be used as an input for others. They build our pyramid foundation thus can be considered the most important group of tests for us.
 
 
-Why testing of a single class behviours in an isolation (unit testing) can bring poor results in case of OOP? Because to address frequent changes in the requirements developers are following best pratices like SOLID.
+Why testing single classes behviours in isolation (unit testing) can bring poor results in case of OOP? Because to address frequent changes in the requirements developers are following best practices (SOLID in particular).
 Thus very often implementation results in a higher number of simpler classes. Relationships between them on the other hand can be tricky to spot when some of them are composed, others are utilizing some form of inversion of control pattern like dependency injection.
 In such case for a test to have a value we should focus on ensuring that relations between different classes are exercised during testing.
 That is why usually it make more sense to test whole components (multiple classes responsible for certain business function delivery) and not a single class in isolation.
