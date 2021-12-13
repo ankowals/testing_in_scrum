@@ -103,13 +103,13 @@ In case of REST API multiple tools exists to generate API clients, tests templat
 
 
 
-*REMARK: Unit tests typically focusing on validation of a function. In case of OOP we can assume that they should focus on particular class behaviours validation (public methods of a class). In practice single application feature utilizes not one but many classes thus technically speaking they can be called component integration tests where component is a class.*
+*REMARK: Unit tests typically focusing on validation of a function. In case of OOP we can assume that they should focus on particular class behaviours validation (public methods of a class). In practice single application feature utilizes not one but many classes thus technically speaking they can be called component integration tests.*
 
 
 
 Often what we call unit tests are actually component integration tests (functional tests without DB/UI). Their biggest advantage is speed of execution. They are ~1000 times faster than functional tests run in fully integrated environment.
 
-They can utilize contract testing approach in the sense that results of one test can be used as an input for others. They build our test pyramid foundation thus can be considered the most important group of tests for us.
+They can utilize contract testing approach in the sense that results of one test can be used as an input for others. They build our pyramid foundation thus can be considered the most important group of tests for us.
 
 
 Why testing of a single class behviours in an isolation (unit testing) can bring poor results in case of OOP? Because to address frequent changes in the requirements developers are following best pratices like SOLID.
