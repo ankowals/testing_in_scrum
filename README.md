@@ -103,13 +103,23 @@ In case of REST API multiple tools exists to generate API clients, tests templat
 
 
 
-*REMARK: Unit tests typically focusing on validation of a function. In case of OOP we can assume that they should focus on particular class validation (public methods of a class). In practice single application feature utilizes not one but many classes thus technically speaking they can be called component integration tests where component is a class.*
+*REMARK: Unit tests typically focusing on validation of a function. In case of OOP we can assume that they should focus on particular class behaviours validation (public methods of a class). In practice single application feature utilizes not one but many classes thus technically speaking they can be called component integration tests where component is a class.*
 
 
 
-Often what we call unit tests are actually component integration tests (functional tests without DB/UI). Their biggest advantage is speed of execution. They are ~100 times faster than functional tests run in fully integrated environment.
+Often what we call unit tests are actually component integration tests (functional tests without DB/UI). Their biggest advantage is speed of execution. They are ~1000 times faster than functional tests run in fully integrated environment.
 
 They can utilize contract testing approach in the sense that results of one test can be used as an input for others. They build our test pyramid foundation thus can be considered the most important group of tests for us.
+
+
+Why testing of a single class behviours in an isolation (unit testing) can bring poor results in case of OOP? Because to address frequent changes in the requirements developers are following best pratices like SOLID.
+Thus very often implementation results in a higher number of simpler classes. Relationships between them on the other hand can be tricky to spot when some of them are composed, others are utilizing some form of inversion of control pattern like dependency injection.
+In such case for a test to have a value we should focus on ensuring that relations between different classes are exercised during testing.
+That is why usually it make more sense to test whole components (multiple classes responsible for certain business function delivery) and not a single class in isolation.
+It is also easy to see now why even when having high code coverage we may still be struggling with product quality. Coverage says nothing about quality of our tests it just gives us a hint about their quantity.
+
+
+*REMARK: Why we should focus on public methods? Because private methods are implementation detail and when we add tests for them we will have to adjust (maintain) such tests evry time we do a change. In case we focus on public methods our implementation detail can change during refactoring but our class behaviours for outside may stay not changed at all.* 
 
 
 
@@ -150,6 +160,9 @@ Other tools we have available can do for us code analysis (scanning), for exampl
 Our CI should ensure that different kinds of tests (functional/non-functional like unit, component, integration, upgrade, performance, security etc.) will be executed as often as possible (for example at every pull request) thus it can be used to eliminate critical bugs before release.
 
 This means that by focusing our further efforts on automation of any additional process needed to release (like documentation preparation, test reports or distribution package generation) we can be ready to release at any point in time. This release effort reduction increases our time we can devote to functional requirements implementation, effectively introducing a [devOps](https://aws.amazon.com/devops/what-is-devops/) model into our team.
+
+Why devOps model is so important to us? Because when we offer our services in the cloud we want to reduce the operational/deployment costs to minimum. Thus development team job does not ends when a new release is out instead such team is involved in every part of the process (deployment included).  
+
 
 ## Final thoughts
 
